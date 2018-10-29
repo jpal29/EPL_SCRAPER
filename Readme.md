@@ -1,4 +1,4 @@
-##Web Scraper
+## Web Scraper
 
 This is a webscraper I created to crawl the website of the
 [English Premier League](https://www.premierleague.com) (EPL) 
