@@ -17,18 +17,30 @@ necessary to
 
 For the purpose of storing the data that I scraped from the EPL 
 site I decided to use a MySQL database. To save time, I've included the schema.sql file in the
-source code for this project. This [SO post](https://stackoverflow.com/questions/10769344/create-mysql-database-with-sql-file) 
-should provide guidance on how to create the database using the .sql file. The rest of this project
-code is written under the assumption that the database is named `eplApi` so you should either
-name your database the same, or update the source code to reflect your preferred database name. In this project that 
-should be done in the get_player_links module and the save_player_info
+source code for this project. So setting up the SQL db is as simple as:
+
+    CREATE DATABASE eplApi;
+    
+You should also create a user named `flaskuser` with full permissions to this database.
+
+    mysql -u root -p GRANT ALL PRIVILEGES ON eplApi.* TO 'flaskuser'@'localhost' IDENTIFIED BY 'password';
+
+Now, you can import the tables into the database.
+
+    mysql -u flaskuser -p eplApi < db/schema.sql
+    
+__NOTE:__ The database configuration and username/password for the database are all read in from a .env file. So, it will be
+necessary to create a .env file with the following format for the rest of the code in this project to work.
+
+    epl_db_user="flaskuser"
+    epl_db_password=<password>
+    epl_db_name="eplApi"
 
 ### Install Chromedriver and Selenium
 
-There are a few pre-requisites needed in order to scrape the EPL website for player
-statistics. The first being that you will need to have [Chromedriver](http://chromedriver.chromium.org/downloads) 
-installed. Once you have downloaded it, you will need to eventually pass it into the 
-```save_player_page``` function in the ```get_player_links``` module
+Next, it is necessary to install [Chromedriver](http://chromedriver.chromium.org/downloads). Once you have downloaded 
+ and saved the binary in `/usr/local/bin/` (if on MacOS), you will pass it into 
+`get_player_page()` located in the `get_player_links` module in order to retrieve the list of EPL players
 
     
 ### Retrieve a list of players in the EPL
