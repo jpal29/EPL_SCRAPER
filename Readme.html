@@ -1,0 +1,28 @@
+<p>How to Use EPL Scraper</p>
+<p>This is a webscraper I created to crawl the website of the
+English Premier League to retrieve player statistics for future analysis.</p>
+<p>Several steps are required to implement this. From a high level, it is 
+necessary to</p>
+<ul>
+<li><a href="#create-the-database">Create the Database</a></li>
+<li><a href="#install-chromedriver-and-selenium">Install Chromedriver and Selenium</a></li>
+<li><a href="#retrieve-a-list-of-players-in-the-epl">Retrieve a list of players in the EPL</a></li>
+<li><a href="#retrieve-and-store-the-statistics-for-each-player">Retrieve and store the statistics for each player</a></li>
+</ul>
+<h3>Create the Database</h3>
+<p>For the purpose of storing the data that I scraped from the English
+ Premier Leage (<a href="https://www.premierleague.com">EPL</a>) 
+site I decided to use a MySQL database. To save time, I've included the schema.sql file in the
+source code for this project. This <a href="https://stackoverflow.com/questions/10769344/create-mysql-database-with-sql-file">SO post</a> 
+should provide guidance on how to create the database using this .sql file. The rest of the source
+code is written under the assumption that the database is named <code>eplApi</code> so you should either
+name your database the same, or update the source code to reflect your preferred database name.</p>
+<h3>Install Chromedriver and Selenium</h3>
+<p>There are a few pre-requisites needed in order to scrape the EPL website for player
+statistics. The first being that you will need to have <a href="http://chromedriver.chromium.org/downloads">Chromedriver</a> 
+installed. Once you have downloaded it, you will need to eventually pass it into the 
+<code>save_player_page</code> function in the <code>get_player_links</code> module</p>
+<pre><code>driver = webdriver.Chrome('/Users/Josh/Downloads/chromedriver')
+</code></pre>
+<h3>Retrieve a list of players in the EPL</h3>
+<h3>Retrieve and store the statistics for each player</h3>

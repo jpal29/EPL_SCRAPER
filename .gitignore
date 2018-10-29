@@ -1,0 +1,6 @@
+dockerfile
+docker-compose.yml
+.env
+*.xml
+.idea/
+*.pyc
